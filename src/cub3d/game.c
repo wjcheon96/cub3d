@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:44:10 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 19:59:29 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:35:24 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,25 +140,30 @@ void	hit_wall(t_game *game, t_ray *ray)
 		ray->texure_x = TEX_HEIGHT - ray->texure_x - 1;
 }
 
+char	*wall_pixel_put(t_image *image, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = image->addr + (y * image->size_line + x * (image->bpp / 8));
+	*(unsigned int *)dst = color;
+	return ((char *)dst);
+}
+
 void	texture_to_image(t_ray *ray)
 {
 	double	step;
 	double	tex_pos;
 	int		y;
 	int		tex_y;
-	int		color;
 
 	step = 1.0 * TEX_HEIGHT / ray->line_height;
-	tex_pos = 0.0;
+	tex_pos = (ray->draw_start - WIN_HEIGHT / 2 + WIN_HEIGHT / 2) * step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
-		++y;
-		if (ray->side == 1)
-			color = (color >> 1) * 8355711;
-			
+		y++;
 	}
 }
 
