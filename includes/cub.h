@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/10 15:42:49 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:18:22 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,83 @@
 
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
-# define KEY_DOWN 125
-# define KEY_UP 126
 
-typedef struct s_camera
+typedef struct s_map
 {
+	int		**map;
+	int		height;
+	int		width;
+}	t_map;
+
+typedef struct s_image
+{
+	void	*img;
+	void	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}	t_image;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_image	*image;
+}	t_mlx;
+
+typedef struct s_player
+{
+	int		init_state;
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	void	*mlx;
-	void	*win;
-	double	sidedist_x;
-	double	sidedist_y;
-	double	deltadist_x;
-	double	deltadist_y;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
+	double	raydir_x;
+	double	raydir_y;
+}	t_player;
+
+typedef struct s_ray
+{
+	double	theta;
 	double	raydir_x;
 	double	raydir_y;
 	int		map_x;
 	int		map_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	walldist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		texture_num;
+	double	wall_x;
+	int		texure_x;
+}	t_ray;
 
-}	t_camera;
-
-typedef struct s_mlx
+typedef struct s_game
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-}	t_mlx;
+	t_map		*map;
+	t_player	*player;
+	t_mlx		*mlx;
+}	t_game;
 
+// init_player.c
+int			find_dir(char c);
+void		init_player_pos(t_player *player, t_map *map);
+void		init_player_dir(t_player *player);
+void		init_player_plane(t_player *player);
+t_player	*init_player(t_map *map);
+
+// init.c
+void		init_mlx(t_mlx *mlx);
+void		init_data(t_game *game, t_mlx *mlx);
 
 #endif
