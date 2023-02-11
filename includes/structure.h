@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:58:51 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 16:05:24 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:56:15 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,9 @@ typedef struct s_map
 {
 	char	*map_temp;
 	int		**map;
-	int		hei;
-	int		wid;
+	int		height;
+	int		width;
 }	t_map;
-
-typedef struct s_text
-{
-	char	*path;
-	int		*texture;
-	double	wid;
-	double	hei;
-}	t_text;
 
 typedef struct s_image
 {
@@ -37,6 +29,14 @@ typedef struct s_image
 	int		size_line;
 	int		endian;
 }	t_image;
+
+typedef struct s_text
+{
+	char	*path;
+	t_image	img;
+	int		width;
+	int		height;
+}	t_text;
 
 typedef struct s_bgcolor
 {
@@ -58,15 +58,18 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
+	double	dx;
+	double	dy;
 	double	plane_x;
 	double	plane_y;
 	double	raydir_x;
 	double	raydir_y;
+	double	theta;
 }	t_player;
 
 typedef struct s_ray
 {
-	double	theta;
+	double	camera;
 	double	raydir_x;
 	double	raydir_y;
 	int		map_x;
@@ -96,6 +99,5 @@ typedef struct s_game
 	t_player	*player;
 	t_mlx		*mlx;
 }	t_game;
-
 
 #endif

@@ -6,11 +6,27 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:26:54 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/10 15:27:35 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:50:52 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	ft_error(char *str)
+{
+	ft_putstr_fd(str, STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+void	free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
 
 int	filename_valid(char *filename)
 {

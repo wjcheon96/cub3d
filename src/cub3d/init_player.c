@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:47:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 15:28:23 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:25:18 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ t_player	*init_player(t_map *map)
 	t_player	*player;
 
 	player = malloc(sizeof(t_player));
+	player->dx = 0;
+	player->dy = 0;
 	init_player_pos(player, map);
 	init_player_dir(player);
 	init_player_plane(player);

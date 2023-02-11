@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:48:22 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 16:18:17 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:47:47 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,16 @@ void	init_mlx(t_mlx *mlx)
 
 void	init_data(t_game *game, t_mlx *mlx)
 {
-
 	game->player = init_player(game->map);
 	game->mlx = mlx;
+}
+
+void	init_game(t_game *game)
+{
+	game->map = malloc(sizeof(t_map));
+	game->bgcolor = malloc(sizeof(t_bgcolor));
+	game->text = malloc(sizeof(t_text) * 4);
+	ft_memset(game->map, 0, sizeof(t_map));
+	ft_memset(game->bgcolor, 0, sizeof(t_bgcolor));
+	ft_memset(game->text, 0, sizeof(t_text));
 }
