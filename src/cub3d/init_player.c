@@ -6,13 +6,13 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:47:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 14:18:16 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:28:23 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	find_dir(int c)
+int	find_dir(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (1);
