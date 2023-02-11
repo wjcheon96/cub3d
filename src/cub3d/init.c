@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:48:22 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 20:30:09 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 22:40:08 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	init_mlx(t_mlx *mlx)
 
 void	init_data(t_game *game, t_mlx *mlx)
 {
-	game->player = init_player(game->map);
 	game->mlx = mlx;
+	game->player = init_player(game->map);
+	parse_text(game);
 }
 
 void	init_game(t_game *game)

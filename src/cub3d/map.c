@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunrlee <eunrlee@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 21:15:24 by eunrlee           #+#    #+#             */
+/*   Updated: 2023/02/11 21:15:25 by eunrlee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub.h"
 
 void	parse_line(t_game *game, char *line, int type)
@@ -5,7 +17,7 @@ void	parse_line(t_game *game, char *line, int type)
 	if (type >= 0 && type <= 3)
 	{
 		if (game->text[type].path)
-			print_error("");
+			print_error("path error");
 		game->text[type].path = ft_mystrdup(line + 2);
 	}
 	else if (type == 4)
@@ -21,25 +33,25 @@ void	trans_map(t_game *game, char **temp)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (temp[y])
+	x = 0;
+	while (temp[x])
 	{
-		game->map->map[y] = (int *)malloc(sizeof(int) * game->map->width);
-		if (!game->map->map[y])
+		game->map->map[x] = (int *)malloc(sizeof(int) * game->map->height);
+		if (!game->map->map[x])
 			print_error("allocated error");
-		ft_memset(game->map->map[y], -1, sizeof(int) * game->map->width);
-		x = -1;
-		while (temp[y][++x])
+		ft_memset(game->map->map[x], -1, sizeof(int) * game->map->height);
+		y = -1;
+		while (temp[x][++y])
 		{
-			if (temp[y][x] == '0')
-				game->map->map[y][x] = 0;
-			else if (temp[y][x] == '1')
-				game->map->map[y][x] = 1;
-			else if (temp[y][x] == 'N' || temp[y][x] == 'W' || \
-				temp[y][x] == 'S' || temp[y][x] == 'E')
-				game->map->map[y][x] = temp[y][x];
+			if (temp[x][y] == '0')
+				game->map->map[x][y] = 0;
+			else if (temp[x][y] == '1')
+				game->map->map[x][y] = 1;
+			else if (temp[x][y] == 'N' || temp[x][y] == 'W' || \
+				temp[x][y] == 'S' || temp[x][y] == 'E')
+				game->map->map[x][y] = temp[x][y];
 		}
-		y++;
+		x++;
 	}
 }
 
@@ -50,9 +62,9 @@ void	parse_map(t_game *game)
 	temp = ft_split(game->map->map_temp, '\n');
 	if (!temp)
 		print_error("allocated error");
-	game->map->height = get_size(temp);
-	game->map->width = get_maxlen(temp);
-	game->map->map = (int **)malloc(sizeof(int *) * game->map->height);
+	game->map->height = get_maxlen(temp);
+	game->map->width = get_size(temp);
+	game->map->map = (int **)malloc(sizeof(int *) * game->map->width);
 	if (!game->map->map)
 		print_error("allocated error");
 	trans_map(game, temp);
@@ -64,22 +76,22 @@ void	check_map(t_map *map)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (y < map->height)
+	x = 0;
+	while (x < map->width)
 	{
-		x = 0;
-		while (x < map->width)
+		y = 0;
+		while (y < map->height)
 		{
-			if (map->map[y][x] != -1 && map->map[y][x] != 1)
+			if (map->map[x][y] != -1 && map->map[x][y] != 1)
 			{
 				if (y == map->height || x == map->width || x == 0 || y == 0)
-					print_error("");
-				if (map->map[y - 1][x] == -1 || map->map[y + 1][x] == -1 || \
-						map->map[y][x - 1] == -1 || map->map[y][x + 1] == -1)
-					print_error("");
+					print_error("map error");
+				if (map->map[x - 1][y] == -1 || map->map[x + 1][y] == -1 || \
+						map->map[x][y - 1] == -1 || map->map[x][y + 1] == -1)
+					print_error("map error");
 			}
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 }

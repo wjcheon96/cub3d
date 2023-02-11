@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:00:30 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 20:59:11 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 22:58:58 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	parse_text(t_game *game)
 	i = 0;
 	while (i < 4)
 	{
-		game->text[i].img.img = mlx_xpm_file_to_image(game->mlx, \
+		game->text[i].img.img = mlx_xpm_file_to_image(game->mlx->mlx_ptr, \
 			game->text[i].path, &game->text[i].width, &game->text[i].height);
 		if (!game->text[i].img.img)
 			print_error("texture error");
-		game->text[i].img.addr = (int *)mlx_get_data_addr(game->text[i].img.img, \
+		game->text[i].img.addr = mlx_get_data_addr(game->text[i].img.img, \
 			&game->text[i].img.bpp, &game->text[i].img.size_line, \
 			&game->text[i].img.endian);
 		i++;
@@ -70,5 +70,4 @@ void	parse_data(t_game *game, char *file)
 	read_file(game, file, 0);
 	parse_map(game);
 	check_map(game->map);
-	parse_text(game);
 }

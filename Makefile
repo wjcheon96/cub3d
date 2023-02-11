@@ -3,7 +3,8 @@ CFLAGS = -Wall -Werror -Wextra
 LFLAGS =  -L ./minilibx -lmlx -framework OpenGL -framework Appkit
 
 SRCS = main.c init.c init_player.c put_background.c validity_check.c \
-	map.c parse.c size.c str.c type.c game.c
+	map.c parse.c size.c str.c type.c game.c put_texture.c render_dda.c \
+	
 
 NAME = cub3d
 RM = rm -rf

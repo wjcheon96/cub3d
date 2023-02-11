@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 20:43:26 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 22:20:09 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,23 @@ void		put_background(t_game *game);
 void		bg_pixel_put(t_image *image, int x, int y, int color);
 
 // game.c
-void	    start_game(t_game *game, t_mlx *mlx);
+void		start_game(t_game *game, t_mlx *mlx);
+void		render(t_game *game);
+void		draw_image(t_game *game, t_ray *ray);
+void		hit_wall(t_game *game, t_ray *ray);
+void		set_texture(t_ray *ray);
+
+// render_dda.c
+void		init_ray(t_game *game, t_ray *ray, int x);
+void		calculate_ray(t_game *game, t_ray *ray);
+void		dda(t_game *game, t_ray *ray);
+void		calculate_distance(t_game *game, t_ray *ray);
+
+// put_texture.c
+void		set_texture(t_ray *ray);
+void		hit_wall(t_game *game, t_ray *ray);
+int			wall_pixel_put(t_image *image, int x, int y);
+void		texture_pixel_put(t_image *image, int x, int y, int color);
+void		texture_to_image(t_game *game, t_ray *ray);
 
 #endif
