@@ -6,31 +6,38 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:33 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 16:03:12 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 16:19:22 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void			my_mlx_pixel_put(t_image *image, int x, int y, int color)
+void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = image->addr + (y * image->size_line + x * (image->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	put_background(t_game *game)
 {
-	int color;
+	int	color;
+	int	i;
+	int	j;
 
-	for (int i = 0 ; i < WIN_HEIGHT - 1 ; ++i)
+	i = 0;
+	while (++i < WIN_HEIGHT - 1)
 	{
-		for (int j = 0 ; j < WIN_WIDTH - 1; ++j)
+		j = 0;
+		while (++j < WIN_WIDTH)
 		{
-			color = ((220) << 16) + ((100) << 8) + ((256 * 0));
-			my_mlx_pixel_put(game->mlx->image, j, i, color);
-		}	
+			if (i < WIN_HEIGHT / 2)
+				my_mlx_pixel_put(game->mlx->image, j, i, game->bgcolor->floor);
+			else
+				my_mlx_pixel_put(game->mlx->image, \
+				j, i, game->bgcolor->ceiling);
+		}
 	}
 }
 

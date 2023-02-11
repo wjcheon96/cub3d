@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:58:51 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 16:01:30 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/11 16:05:24 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ typedef struct s_map
 {
 	char	*map_temp;
 	int		**map;
-	int		height;
-	int		width;
+	int		hei;
+	int		wid;
 }	t_map;
 
 typedef struct s_text

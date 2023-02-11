@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 LFLAGS =  -L ./minilibx -lmlx -framework OpenGL -framework Appkit
 
-SRCS = main.c init.c init_player.c parse.c validity_check.c  
+SRCS = main.c init.c init_player.c #parse.c validity_check.c
 
 NAME = cub3d
 RM = rm -rf
