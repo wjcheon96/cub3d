@@ -6,17 +6,17 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:44:10 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 16:59:24 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 20:22:08 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	draw_image(t_game *game, t_ray *ray)
+void	draw_image(t_game *game, int x, t_ray *ray)
 {
 	set_texture(ray);
 	hit_wall(game, ray);
-	texture_to_image(game, ray);
+	texture_to_image(game, x, ray);
 }
 
 void	render(t_game *game)
@@ -31,17 +31,15 @@ void	render(t_game *game)
 		calculate_ray(game, &ray);
 		dda(game, &ray);
 		calculate_distance(game, &ray);
-		draw_image(game, &ray);
+		draw_image(game, x, &ray);
 		x++;
 	}
 }
 
 void	start_game(t_game *game, t_mlx *mlx)
 {
+	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 	put_background(game);
 	render(game);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->image->img, 0, 0);
-	mlx_hook(game->mlx->win_ptr, 2, 0, key_hook, &mlx);
-	mlx_hook(game->mlx->win_ptr, 17, 0, exit_hook, &mlx);
-	mlx_loop(game->mlx->mlx_ptr);
 }

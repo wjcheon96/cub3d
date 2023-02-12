@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:15:21 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 17:02:11 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 18:55:12 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,24 @@ void	texture_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	texture_to_image(t_game *game, t_ray *ray)
+void	texture_to_image(t_game *game, int x, t_ray *ray)
 {
 	int		y;
 	int		tex_y;
-	int		step;
-	int		tex_pos;
+	double		step;
+	double		tex_pos;
 	int		color;
 
 	(void)game;
 	step = 1.0 * TEX_HEIGHT / ray->line_height;
-	tex_pos = (ray->draw_start - WIN_HEIGHT / 2 + WIN_HEIGHT / 2) * step;
+	tex_pos = (ray->draw_start - WIN_HEIGHT / 2 + ray->line_height / 2) * step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
 		color = game->text[ray->texture_num].data[TEX_HEIGHT * tex_y + ray->texture_x];
-		// texture_pixel_put(game->mlx->image, ray->texture_x, tex_y, \
-		// (wall_pixel_put(&game->text[ray->texture_num].img, ray->texture_x, y)));
-		texture_pixel_put(game->mlx->image, ray->texture_x, y, color);
-		if(ray->side == 1)
-			color = (color >> 1) & 8355711;
+		texture_pixel_put(game->mlx->image, x, y, color);
 		y++;
 	}
 }
