@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 22:20:09 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 14:46:54 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,8 @@ int			wall_pixel_put(t_image *image, int x, int y);
 void		texture_pixel_put(t_image *image, int x, int y, int color);
 void		texture_to_image(t_game *game, t_ray *ray);
 
+// hook.c
+int			exit_hook(t_mlx *mlx);
+void		close_image(t_mlx *mlx);
+int			key_hook(int keycode, t_mlx *mlx);
 #endif

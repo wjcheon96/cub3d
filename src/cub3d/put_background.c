@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:35:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 19:52:56 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 14:28:34 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ void	put_background(t_game *game)
 	int	j;
 
 	i = 0;
-	while (++i < WIN_HEIGHT - 1)
+	while (i < WIN_HEIGHT - 1)
 	{
 		j = 0;
-		while (++j < WIN_WIDTH)
+		while (j < WIN_WIDTH - 1)
 		{
 			if (i < WIN_HEIGHT / 2)
 				bg_pixel_put(game->mlx->image, j, i, game->bgcolor->floor);
 			else
 				bg_pixel_put(game->mlx->image, j, i, game->bgcolor->ceiling);
+			j++;
 		}
+		i++;
 	}
 }

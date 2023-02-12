@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:58:51 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 22:40:59 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 15:54:50 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_text
 {
 	char	*path;
 	t_image	img;
+	int		*data;
 	int		width;
 	int		height;
 }	t_text;
@@ -88,7 +89,7 @@ typedef struct s_ray
 	int		draw_end;
 	int		texture_num;
 	double	wall_x;
-	int		texure_x;
+	int		texture_x;
 }	t_ray;
 
 typedef struct s_game
