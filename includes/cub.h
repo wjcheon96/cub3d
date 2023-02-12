@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 19:24:52 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:17:43 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int			exit_hook(t_game *game);
 void		close_image(t_mlx *mlx);
 int			key_hook(int keycode, t_game *game);
 
-void        reset_image(t_mlx *mlx);
-
+void		reset_image(t_mlx *mlx);
+void		rotate_hook(t_player *player, int keycode);
 #endif

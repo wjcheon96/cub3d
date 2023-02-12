@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:39:43 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 20:21:20 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:36:29 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ void	reset_image(t_mlx *mlx)
 		&mlx->image.size_line, &mlx->image.endian);
 }
 
+void	rotate_hook(t_player *player, int keycode)
+{
+	if (keycode == KEY_LEFT)
+		player->theta -= 0.1;
+	else if (keycode == KEY_RIGHT)
+		player->theta += 0.1;
+}
 
 int	key_hook(int keycode, t_game *game)
 {
@@ -46,6 +53,8 @@ int	key_hook(int keycode, t_game *game)
 		move_hook(game->player, keycode);
 	if (keycode == KEY_ESC)
 		close_image(game->mlx);
+	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		rotate_hook(game->player, keycode);
 	reset_image(game->mlx);
 	start_game(game, game->mlx);
 	return (0);

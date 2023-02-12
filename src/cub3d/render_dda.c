@@ -6,11 +6,24 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:13:26 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 20:04:09 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:42:53 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	rotate(t_player *player)
+{
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = player->dir_x;
+	old_plane_x = player->plane_x;
+	player->dir_x = player->dir_x * cos(player->theta) - player->dir_y * sin(player->theta);
+	player->dir_y = old_dir_x * sin(player->theta) + player->dir_y * cos(player->theta);
+	player->plane_x = player->plane_x * cos(player->dir_x) - player->plane_y * sin(player->theta);
+	player->plane_y = old_plane_x * sin(player->theta) + player->plane_y * cos(player->theta);
+}
 
 void	init_ray(t_game *game, t_ray *ray, int x)
 {
@@ -18,6 +31,7 @@ void	init_ray(t_game *game, t_ray *ray, int x)
 
 	player = game->player;
 	ray->camera = 2 * x / (double)WIN_WIDTH - 1;
+	rotate(player);
 	ray->raydir_x = player->dir_x + player->plane_x * ray->camera;
 	ray->raydir_y = player->dir_y + player->plane_y * ray->camera;
 	ray->map_x = (int)player->pos_x;
