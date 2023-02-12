@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:47:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 16:45:29 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 17:42:45 by eunrlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	init_player_pos(t_player *player, t_map *map)
 		i = 0;
 		while (i < map->width)
 		{
-			if (find_dir(map->map[i][j]))
+			if (find_dir(map->map[j][i]))
 			{
-				player->init_state = map->map[i][j];
+				player->init_state = map->map[j][i];
 				player->pos_x = (double)i;
 				player->pos_y = (double)j;
 			}

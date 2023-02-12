@@ -80,7 +80,7 @@ void	dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map->map[ray->map_x][ray->map_y] > 0)
+		if (map->map[ray->map_y][ray->map_x] > 0)
 			ray->hit = 1;
 	}
 	// printf("%f %f %f %f\n", ray->sidedist_x, ray->sidedist_y, ray->deltadist_x, ray->deltadist_y);

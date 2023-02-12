@@ -14,7 +14,8 @@
 
 void	close_image(t_mlx *mlx)
 {
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	(void)mlx;
+	//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	exit(0);
 }
 
