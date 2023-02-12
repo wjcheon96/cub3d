@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:47:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 21:47:33 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 16:45:29 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void	init_player_plane(t_player *player)
 	else if (player->init_state == 'E')
 	{
 		player->plane_x = 0.0;
-		player->plane_y = -0.66;
+		player->plane_y = 0.66;
 	}
 	else if (player->init_state == 'W')
 	{
 		player->plane_x = 0.0;
-		player->plane_y = 0.66;
+		player->plane_y = -0.66;
 	}
 }
 

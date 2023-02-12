@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 14:46:54 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 16:22:42 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@
 # include "parse.h"
 
 # define TITLE "bus"
-# define WIN_MAGNI 100
-# define WIN_HEIGHT (WIN_MAGNI * 9)
-# define WIN_WIDTH (WIN_MAGNI * 16)
+# define WIN_HEIGHT 900
+# define WIN_WIDTH 1600
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
 

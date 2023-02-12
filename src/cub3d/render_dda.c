@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:13:26 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/11 22:18:43 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 17:13:33 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_ray(t_game *game, t_ray *ray, int x)
 
 	player = game->player;
 	ray->camera = 2 * x / (double)WIN_WIDTH - 1;
-	ray->raydir_x = player->dir_x + player->dx + player->plane_x * ray->camera;
-	ray->raydir_y = player->dir_y + player->dy + player->plane_y * ray->camera;
+	ray->raydir_x = player->dir_x + player->plane_x * ray->camera;
+	ray->raydir_y = player->dir_y + player->plane_y * ray->camera;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	if (ray->raydir_x == 0)
@@ -78,29 +78,31 @@ void	dda(t_game *game, t_ray *ray)
 		{
 			ray->sidedist_y += ray->deltadist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 0;
+			ray->side = 1;
 		}
 		if (map->map[ray->map_x][ray->map_y] > 0)
 			ray->hit = 1;
 	}
+	// printf("%f %f %f %f\n", ray->sidedist_x, ray->sidedist_y, ray->deltadist_x, ray->deltadist_y);
 }
 
 void	calculate_distance(t_game *game, t_ray *ray)
 {
 	t_player	*player;
+	int			pitch;
 
+	pitch = 100;
 	player = game->player;
 	if (ray->side == 0)
-		ray->walldist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2) \
-		/ ray->raydir_x;
+		ray->walldist = ray->sidedist_x - ray->deltadist_x;
 	else
-		ray->walldist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2) \
-		/ ray->raydir_y;
+		ray->walldist = ray->sidedist_y - ray->deltadist_y;
+		// printf("%f\n", ray->walldist);
 	ray->line_height = (int)(WIN_HEIGHT / ray->walldist);
-	ray->draw_start = WIN_HEIGHT / 2 - ray->line_height / 2;
+	ray->draw_start = WIN_HEIGHT / 2 - ray->line_height / 2 + pitch;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
+	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2 + pitch;
 	if (ray->draw_end >= WIN_HEIGHT)
 		ray->draw_end = WIN_HEIGHT - 1;
 }

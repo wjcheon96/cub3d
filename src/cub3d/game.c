@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:44:10 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 15:55:41 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/12 16:59:24 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	render(t_game *game)
 
 void	start_game(t_game *game, t_mlx *mlx)
 {
-	// put_background(game);
+	put_background(game);
 	render(game);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->image->img, 0, 0);
 	mlx_hook(game->mlx->win_ptr, 2, 0, key_hook, &mlx);
