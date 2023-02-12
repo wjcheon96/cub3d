@@ -22,24 +22,21 @@ void	close_image(t_mlx *mlx)
 void	move_hook(t_player *player, int keycode)
 {
 	if (keycode == KEY_A)
-		player->dx -= 10;
+		player->dx -= 0.1;
 	else if (keycode == KEY_S)
-		player->dy -= 10;
+		player->dy += 0.1;
 	else if (keycode == KEY_D)
-		player->dx += 10;
+		player->dx += 0.1;
 	else if (keycode == KEY_W)
-		player->dy += 10;
+		player->dy -= 0.1;
 }
 
 void	reset_image(t_mlx *mlx)
 {
-	t_image	*img;
-
-	mlx_destroy_image(mlx->mlx_ptr, mlx->image);
-	mlx->image->img = mlx_new_image(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	img = mlx->image;
-	img->addr = mlx_get_data_addr(mlx->image, &img->bpp, \
-									&img->size_line, &img->endian);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->image.img);
+	mlx->image.img = mlx_new_image(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	mlx->image.addr = mlx_get_data_addr(mlx->image.img, &mlx->image.bpp, \
+		&mlx->image.size_line, &mlx->image.endian);
 }
 
 

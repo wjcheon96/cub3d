@@ -38,8 +38,12 @@ void	render(t_game *game)
 
 void	start_game(t_game *game, t_mlx *mlx)
 {
-	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	// mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	game->player->pos_x += game->player->dx;
+	game->player->pos_y += game->player->dy;
 	put_background(game);
 	render(game);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->image->img, 0, 0);
+	game->player->dx = 0;
+	game->player->dy = 0;
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->image.img, 0, 0);
 }

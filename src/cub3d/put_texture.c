@@ -47,19 +47,19 @@ void	hit_wall(t_game *game, t_ray *ray)
 		ray->texture_x = TEX_WIDTH - ray->texture_x - 1;
 }
 
-int	wall_pixel_put(t_image *image, int x, int y)
+int	wall_pixel_put(t_image image, int x, int y)
 {
 	char	*dst;
 
-	dst = image->addr + (y * image->size_line + x * (image->bpp / 8));
+	dst = image.addr + (y * image.size_line + x * (image.bpp / 8));
 	return ((int)dst);
 }
 
-void	texture_pixel_put(t_image *image, int x, int y, int color)
+void	texture_pixel_put(t_image image, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = image->addr + (y * image->size_line + x * (image->bpp / 8));
+	dst = image.addr + (y * image.size_line + x * (image.bpp / 8));
 	*(unsigned int *)dst = color;
 }
 

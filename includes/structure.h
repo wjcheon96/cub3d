@@ -49,7 +49,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_image	*image;
+	t_image	image;
 }	t_mlx;
 
 typedef struct s_player

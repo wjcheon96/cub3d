@@ -59,7 +59,7 @@ void		parse_data(t_game *game, char *file);
 
 // put_background.c
 void		put_background(t_game *game);
-void		bg_pixel_put(t_image *image, int x, int y, int color);
+void		bg_pixel_put(t_image image, int x, int y, int color);
 
 // game.c
 void		start_game(t_game *game, t_mlx *mlx);
@@ -77,8 +77,8 @@ void		calculate_distance(t_game *game, t_ray *ray);
 // put_texture.c
 void		set_texture(t_ray *ray);
 void		hit_wall(t_game *game, t_ray *ray);
-int			wall_pixel_put(t_image *image, int x, int y);
-void		texture_pixel_put(t_image *image, int x, int y, int color);
+int			wall_pixel_put(t_image image, int x, int y);
+void		texture_pixel_put(t_image image, int x, int y, int color);
 void		texture_to_image(t_game *game, int x, t_ray *ray);
 
 // hook.c

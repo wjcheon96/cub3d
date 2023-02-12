@@ -18,10 +18,10 @@ void	init_ray(t_game *game, t_ray *ray, int x)
 
 	player = game->player;
 	ray->camera = 2 * x / (double)WIN_WIDTH - 1;
-	ray->raydir_x = player->dir_x + player->dx + player->plane_x * ray->camera;
-	ray->raydir_y = player->dir_y + player->dy + player->plane_y * ray->camera;
-	ray->map_x = (int)player->pos_x + player->dx;
-	ray->map_y = (int)player->pos_y + player->dy;
+	ray->raydir_x = player->dir_x + player->plane_x * ray->camera;
+	ray->raydir_y = player->dir_y + player->plane_y * ray->camera;
+	ray->map_x = (int)player->pos_x;
+	ray->map_y = (int)player->pos_y;
 	if (ray->raydir_x == 0)
 		ray->deltadist_x = 1e30;
 	else
