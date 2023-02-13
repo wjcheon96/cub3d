@@ -32,9 +32,17 @@ void	init_data(t_game *game, t_mlx *mlx)
 void	init_game(t_game *game)
 {
 	game->map = malloc(sizeof(t_map));
+	if (!game->map)
+		print_perror("allocated error");
 	game->bgcolor = malloc(sizeof(t_bgcolor));
+	if (!game->bgcolor)
+		print_perror("allocated error");
 	game->text = malloc(sizeof(t_text) * 4);
+	if (!game->text)
+		print_perror("allocated error");
 	ft_memset(game->map, 0, sizeof(t_map));
 	ft_memset(game->bgcolor, 0, sizeof(t_bgcolor));
 	ft_memset(game->text, 0, sizeof(t_text) * 4);
+	game->bgcolor->ceiling = -1;
+	game->bgcolor->floor = -1;
 }

@@ -47,3 +47,30 @@ char	*ft_mystrdup(char *line)
 	ft_strlcpy(ret, line + i, len);
 	return (ret);
 }
+
+long	ft_myatoi(const char *str)
+{
+	int		sign;
+	long	result;
+
+	sign = 1;
+	result = 0;
+	if (ft_strlen(str) > 11)
+		return (-1);
+	while ((9 <= *str && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while ('0' <= *str && *str <= '9')
+	{
+		result = (result * 10) + (*str - '0');
+		str++;
+	}
+	if (*str && *str != '\n' && !ft_isdigit(*str))
+		return (-1);
+	return (sign * result);
+}

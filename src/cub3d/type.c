@@ -35,7 +35,7 @@ int	valid_line(char *line)
 int	type_color(char *line)
 {
 	int		i;
-	int		num;
+	long	num;
 	int		ret;
 	char	**tmp;
 
@@ -51,10 +51,10 @@ int	type_color(char *line)
 	while (++i < 3)
 	{
 		ret = ret << 8;
-		num = ft_atoi(tmp[i]);
+		num = ft_myatoi(tmp[i]);
 		if (num < 0 || num > 256)
-			print_error("");
-		ret += num;
+			print_error("invalid value of color");
+		ret += (int)num;
 	}
 	free_str(tmp);
 	return (ret);
