@@ -76,6 +76,8 @@ void	parse_data(t_game *game, char *file)
 {
 	init_game(game);
 	read_file(game, file, 0);
+	if (!game->map->map_temp)
+		print_error("invalid map");
 	parse_map(game);
 	check_type(game);
 	check_map(game->map);
