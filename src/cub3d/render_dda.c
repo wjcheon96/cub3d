@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:13:26 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 22:42:53 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:51:03 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,11 @@ void	init_ray(t_game *game, t_ray *ray, int x)
 	ray->raydir_y = player->dir_y + player->plane_y * ray->camera;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
-	if (ray->raydir_x == 0)
-		ray->deltadist_x = 1e30;
-	else
-		ray->deltadist_x = fabs(1 / ray->raydir_x);
-	if (ray->raydir_y == 0)
-		ray->deltadist_y = 1e30;
-	else
-		ray->deltadist_y = fabs(1 / ray->raydir_y);
+	ray->deltadist_x = fabs(1 / ray->raydir_x);
+	ray->deltadist_y = fabs(1 / ray->raydir_y);
 	ray->hit = 0;
 }
 
-// dx, dy key press
 void	calculate_ray(t_game *game, t_ray *ray)
 {
 	t_player	*player;
@@ -97,7 +90,6 @@ void	dda(t_game *game, t_ray *ray)
 		if (map->map[ray->map_y][ray->map_x] > 0)
 			ray->hit = 1;
 	}
-	// printf("%f %f %f %f\n", ray->sidedist_x, ray->sidedist_y, ray->deltadist_x, ray->deltadist_y);
 }
 
 void	calculate_distance(t_game *game, t_ray *ray)
