@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:39:43 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 16:19:05 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:32:14 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,23 @@ void	reset_image(t_mlx *mlx)
 		&mlx->image.size_line, &mlx->image.endian);
 }
 
-void	rotate_hook(t_player *player, int keycode)
+void	rotate_hook(t_player *player, int axis)
 {
-	if (keycode == KEY_LEFT)
-		player->theta -= 0.001;
-	else if (keycode == KEY_RIGHT)
-		player->theta += 0.001;
+	double	old_dir_x;
+	double	old_dir_y;
+	double	old_plane_x;
+	double	old_plane_y;
+
+	old_dir_x = player->dir_x;
+	old_dir_y = player->dir_y;
+	old_plane_x = player->plane_x;
+	old_plane_y = player->plane_y;
+	player->dir_x = old_dir_x * cos(axis * 0.01) - old_dir_y * sin(axis * 0.01);
+	player->dir_y = old_dir_x * sin(axis * 0.01) + old_dir_y * cos(axis * 0.01);
+	player->plane_x = old_plane_x * cos(axis * 0.01) - \
+	old_plane_y * sin(axis * 0.01);
+	player->plane_y = old_plane_x * sin(axis * 0.01) + \
+	old_plane_y * cos(axis * 0.01);
 }
 
 int	key_hook(int keycode, t_game *game)
@@ -53,8 +64,10 @@ int	key_hook(int keycode, t_game *game)
 		move_hook(game->player, keycode);
 	if (keycode == KEY_ESC)
 		close_image(game->mlx);
-	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotate_hook(game->player, keycode);
+	if (keycode == KEY_LEFT)
+		rotate_hook(game->player, -1);
+	if (keycode == KEY_RIGHT)
+		rotate_hook(game->player, 1);
 	reset_image(game->mlx);
 	start_game(game, game->mlx);
 	return (0);
