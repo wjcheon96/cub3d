@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:39:43 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 17:15:36 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 19:55:35 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	rotate_hook(t_player *player, int axis)
 	old_dir_y = player->dir_y;
 	old_plane_x = player->plane_x;
 	old_plane_y = player->plane_y;
-	player->dir_x = old_dir_x * cos(axis * 0.01) - old_dir_y * sin(axis * 0.01);
-	player->dir_y = old_dir_x * sin(axis * 0.01) + old_dir_y * cos(axis * 0.01);
-	player->plane_x = old_plane_x * cos(axis * 0.01) - \
-	old_plane_y * sin(axis * 0.01);
-	player->plane_y = old_plane_x * sin(axis * 0.01) + \
-	old_plane_y * cos(axis * 0.01);
+	player->dir_x = old_dir_x * cos(axis * 0.05) - old_dir_y * sin(axis * 0.05);
+	player->dir_y = old_dir_x * sin(axis * 0.05) + old_dir_y * cos(axis * 0.05);
+	player->plane_x = old_plane_x * cos(axis * 0.05) - \
+	old_plane_y * sin(axis * 0.05);
+	player->plane_y = old_plane_x * sin(axis * 0.05) + \
+	old_plane_y * cos(axis * 0.05);
 }
 
 int	key_hook(int keycode, t_game *game)
