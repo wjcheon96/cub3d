@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:39:52 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 19:35:20 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 21:26:05 by eunrlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	move_down(t_map *map, t_player *player)
 	int	y;
 
 	(void)map;
-	x = (int)(player->pos_x - player->dir_x * 0.1 + 0.2);
-	y = (int)(player->pos_y - player->dir_y * 0.1 + 0.2);
+	x = (int)(player->pos_x - player->dir_x * 0.11);
+	y = (int)(player->pos_y - player->dir_y * 0.11);
 	if (map->map[(int)(player->pos_y)][x] != 1)
 		player->pos_x -= player->dir_x * 0.1;
 	if (map->map[y][(int)(player->pos_x)] != 1)
