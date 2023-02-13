@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:00:30 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 17:33:34 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:19:22 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	parse_text(t_game *game)
 			&game->text[i].img.endian);
 		i++;
 	}
-
 }
 
 void	parse_data(t_game *game, char *file)

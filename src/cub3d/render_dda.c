@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:13:26 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 14:51:03 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:05:17 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 void	rotate(t_player *player)
 {
 	double	old_dir_x;
+	double	old_dir_y;
 	double	old_plane_x;
+	double	old_plane_y;
 
 	old_dir_x = player->dir_x;
+	old_dir_y = player->dir_y;
 	old_plane_x = player->plane_x;
-	player->dir_x = player->dir_x * cos(player->theta) - player->dir_y * sin(player->theta);
-	player->dir_y = old_dir_x * sin(player->theta) + player->dir_y * cos(player->theta);
-	player->plane_x = player->plane_x * cos(player->dir_x) - player->plane_y * sin(player->theta);
-	player->plane_y = old_plane_x * sin(player->theta) + player->plane_y * cos(player->theta);
+	old_plane_y = player->plane_y;
+	player->dir_x = old_dir_x * cos(player->theta) - old_dir_y * sin(player->theta);
+	player->dir_y = old_dir_x * sin(player->theta) + old_dir_y * cos(player->theta);
+	player->plane_x = old_plane_x * cos(player->theta) - old_plane_y * sin(player->theta);
+	player->plane_y = old_plane_x * sin(player->theta) + old_plane_y * cos(player->theta);
 }
 
 void	init_ray(t_game *game, t_ray *ray, int x)

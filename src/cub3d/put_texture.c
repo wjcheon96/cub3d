@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:15:21 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 22:31:38 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:42:42 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	set_texture(t_ray *ray)
 {
 	if (ray->side == 0)
 	{
-		if (ray->raydir_y < 0)
+		if (ray->raydir_x < 0)
 			ray->texture_num = 0;
 		else
 			ray->texture_num = 1;
 	}
 	else
 	{
-		if (ray->raydir_x < 0)
+		if (ray->raydir_y < 0)
 			ray->texture_num = 2;
 		else
 			ray->texture_num = 3;
@@ -65,11 +65,11 @@ void	texture_pixel_put(t_image image, int x, int y, int color)
 
 void	texture_to_image(t_game *game, int x, t_ray *ray)
 {
-	int		y;
-	int		tex_y;
+	int			y;
+	int			tex_y;
 	double		step;
 	double		tex_pos;
-	int		color;
+	int			color;
 
 	(void)game;
 	step = 1.0 * TEX_HEIGHT / ray->line_height;
@@ -79,7 +79,8 @@ void	texture_to_image(t_game *game, int x, t_ray *ray)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
-		color = game->text[ray->texture_num].data[TEX_HEIGHT * tex_y + ray->texture_x];
+		color = game->text[ray->texture_num].data[TEX_HEIGHT * \
+		tex_y + ray->texture_x];
 		texture_pixel_put(game->mlx->image, x, y, color);
 		y++;
 	}

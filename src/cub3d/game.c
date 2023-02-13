@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:44:10 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 14:39:37 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:33:11 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	render(t_game *game)
 void	start_game(t_game *game, t_mlx *mlx)
 {
 	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-	if (game->map->map[(int)(game->player->pos_y + game->player->dy)] \
-	[(int)(game->player->pos_x + game->player->dx)] != 1)
+	if (game->map->map[(int)(game->player->pos_y + game->player->dy * 2)] \
+	[(int)(game->player->pos_x + game->player->dx * 2)] != 1)
 	{
 		game->player->pos_x += game->player->dx;
 		game->player->pos_y += game->player->dy;

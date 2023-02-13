@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:39:43 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 14:28:09 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:19:05 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	close_image(t_mlx *mlx)
 {
 	(void)mlx;
-	//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	exit(0);
 }
 
@@ -42,9 +42,9 @@ void	reset_image(t_mlx *mlx)
 void	rotate_hook(t_player *player, int keycode)
 {
 	if (keycode == KEY_LEFT)
-		player->theta -= 0.1;
+		player->theta -= 0.001;
 	else if (keycode == KEY_RIGHT)
-		player->theta += 0.1;
+		player->theta += 0.001;
 }
 
 int	key_hook(int keycode, t_game *game)
