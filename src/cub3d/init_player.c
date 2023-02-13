@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:47:02 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 15:49:04 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 17:32:42 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	init_player_pos(t_player *player, t_map *map)
 			if (find_dir(map->map[j][i]))
 			{
 				player->init_state = map->map[j][i];
-				player->pos_x = (double)i;
-				player->pos_y = (double)j;
+				player->pos_x = (double)i + 0.5;
+				player->pos_y = (double)j + 0.5;
 				map->map[j][i] = 0;
 			}
 			i++;
@@ -97,8 +97,6 @@ t_player	*init_player(t_map *map)
 	t_player	*player;
 
 	player = malloc(sizeof(t_player));
-	player->dx = 0;
-	player->dy = 0;
 	player->theta = 1 / 6 * M_PI;
 	init_player_pos(player, map);
 	init_player_dir(player);

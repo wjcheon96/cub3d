@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:39:43 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 16:32:14 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 17:15:36 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@ void	close_image(t_mlx *mlx)
 	(void)mlx;
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	exit(0);
-}
-
-void	move_hook(t_player *player, int keycode)
-{
-	if (keycode == KEY_A)
-		player->dx -= 0.1;
-	else if (keycode == KEY_S)
-		player->dy += 0.1;
-	else if (keycode == KEY_D)
-		player->dx += 0.1;
-	else if (keycode == KEY_W)
-		player->dy -= 0.1;
 }
 
 void	reset_image(t_mlx *mlx)
@@ -61,7 +49,7 @@ void	rotate_hook(t_player *player, int axis)
 int	key_hook(int keycode, t_game *game)
 {
 	if ((keycode >= KEY_A && keycode <= KEY_D) || keycode == KEY_W)
-		move_hook(game->player, keycode);
+		move_hook(game->map, game->player, keycode);
 	if (keycode == KEY_ESC)
 		close_image(game->mlx);
 	if (keycode == KEY_LEFT)

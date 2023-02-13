@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:23:58 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 22:17:43 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 17:15:25 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		bg_pixel_put(t_image image, int x, int y, int color);
 // game.c
 void		start_game(t_game *game, t_mlx *mlx);
 void		render(t_game *game);
-void	    draw_image(t_game *game, int x, t_ray *ray);
+void		draw_image(t_game *game, int x, t_ray *ray);
 void		hit_wall(t_game *game, t_ray *ray);
 void		set_texture(t_ray *ray);
 
@@ -85,7 +85,10 @@ void		texture_to_image(t_game *game, int x, t_ray *ray);
 int			exit_hook(t_game *game);
 void		close_image(t_mlx *mlx);
 int			key_hook(int keycode, t_game *game);
-
 void		reset_image(t_mlx *mlx);
 void		rotate_hook(t_player *player, int keycode);
+
+
+void		move_hook(t_map *map, t_player *player, int keycode);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:58:51 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/12 16:49:35 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 17:16:07 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double	dx;
-	double	dy;
 	double	plane_x;
 	double	plane_y;
 	double	theta;

@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:15:24 by eunrlee           #+#    #+#             */
-/*   Updated: 2023/02/13 16:35:30 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:37:58 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ void	check_map(t_map *map)
 				if (map->map[y - 1][x] == -1 || map->map[y + 1][x] == -1 || \
 						map->map[y][x - 1] == -1 || map->map[y][x + 1] == -1)
 					print_error("map error");
-			if (map->map[y - 1][x - 1] == -1 || map->map[y + 1][x + 1] == -1 || \
-						map->map[y + 1][x - 1] == -1 || map->map[y - 1][x + 1] == -1)
+				if (map->map[y - 1][x - 1] == -1 \
+				|| map->map[y + 1][x + 1] == -1 || map->map[y + 1][x - 1] == -1 \
+				|| map->map[y - 1][x + 1] == -1)
 					print_error("map error");
 			}
 			x++;
