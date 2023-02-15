@@ -6,7 +6,7 @@
 /*   By: wocheon <wocheon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:15:21 by wocheon           #+#    #+#             */
-/*   Updated: 2023/02/13 15:42:42 by wocheon          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:01:27 by wocheon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_texture(t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->raydir_x < 0)
-			ray->texture_num = 0;
+			ray->texture_num = 3;
 		else
 			ray->texture_num = 1;
 	}
@@ -26,7 +26,7 @@ void	set_texture(t_ray *ray)
 		if (ray->raydir_y < 0)
 			ray->texture_num = 2;
 		else
-			ray->texture_num = 3;
+			ray->texture_num = 0;
 	}
 }
 
